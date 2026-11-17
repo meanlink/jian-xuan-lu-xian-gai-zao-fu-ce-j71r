@@ -6,9 +6,9 @@ from scipy import stats
 
 
 def metadata():
-    return {"name": "拣选路线改造复测", "short": "pick-paired", "tagline": "让同一个人的前后差，回答路线是否缩短。", "client": "北岭履约 · 80 名作业员的流程改善试点组", "workflow": "改善员把两周作业均时直接比较，忽略人员结构和熟练度差异。", "pains": ["不同人员混在前后平均中", "缺失配对无法识别", "改善秒数缺少区间与个体差异"], "upstream": "匿名作业员配对测时 BL_route_retest.csv", "downstream": "流程改善组决定路线方案是否扩大复测",
-            "entities": ["配对复测样本", "路线改善核验", "班组复测简报"], "dataset_name": "80 名作业员 · 原路线与新路线配对",
-            "columns": [{"key": "operator", "label": "匿名作业员", "type": "string"}, {"key": "team", "label": "试点小组", "type": "string"}, {"key": "before", "label": "原路线/秒", "type": "number"}, {"key": "after", "label": "新路线/秒", "type": "number"}],
+    return {"name": "拣选路线改造复测", "short": "pick-paired", "tagline": "让同一个人的前后差，回答路线是否缩短。", "client": "北岭履约 · 80 名作业员的流程改善试点组", "workflow": "改善员把两周作业均时直接比较，忽略人员结构和熟练度差异。", "pains": ["不同人员混在前后平均中", "缺失配对无法识别", "改善秒数缺少区间与个体差异", "临时工换号把同人拆开", "离职工号复用把异人混算"], "upstream": "匿名作业员配对测时 BL_route_retest.csv", "downstream": "流程改善组决定路线方案是否扩大复测",
+            "entities": ["配对复测样本", "路线改善核验", "班组复测简报", "人员身份簿"], "dataset_name": "80 名作业员 · 原路线与新路线配对",
+            "columns": [{"key": "operator", "label": "匿名作业员", "type": "string"}, {"key": "team", "label": "试点小组", "type": "string"}, {"key": "before", "label": "原路线/秒", "type": "number"}, {"key": "after", "label": "新路线/秒", "type": "number"}, {"key": "date", "label": "测时日期", "type": "date", "optional": True}, {"key": "warehouse", "label": "仓别", "type": "string", "optional": True}],
             "parameters": [{"key": "team", "label": "试点小组", "type": "select", "default": "全部", "options": [{"value": x, "label": x} for x in ["全部", "一组", "二组", "三组", "四组"]]}, {"key": "confidence", "label": "置信度", "type": "select", "default": "0.95", "options": [{"value": str(x), "label": f"{x*100:g}%"} for x in [.9, .95, .99]]}],
             "workbench_title": "人员配对改善核验", "action_label": "计算配对差与区间", "unit": "秒", "accent": "oklch(47% 0.075 248)", "style": "blueprint",
             "seed_story": ["07:50 改善员导入 BL_route_retest.csv，共 80 人。", "08:10 核对 OP-001 至 OP-080 的前后测时完整。", "08:30 选择全部小组、95% 置信区间。", "08:35 执行配对检验，查看平均节省秒数。", "08:50 打开逐人差值，核对反向改善样本。", "09:10 单独选择四组，比较改善差异。", "09:30 导出班组简报，安排负改善人员的路线走查。"],

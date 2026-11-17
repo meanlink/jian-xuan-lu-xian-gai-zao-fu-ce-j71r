@@ -8,3 +8,19 @@ class JobStatus(str, Enum):
     running = 'running'
     completed = 'completed'
     failed = 'failed'
+class PersonStatus(str, Enum):
+    active = 'active'
+    merged = 'merged'
+class BindingState(str, Enum):
+    active = 'active'
+    revoked = 'revoked'
+class MapState(str, Enum):
+    active = 'active'
+    superseded = 'superseded'
+class RebuildState(str, Enum):
+    previewed = 'previewed'
+    stale = 'stale'
+    confirmed = 'confirmed'
+    rebuilding = 'rebuilding'
+    switched = 'switched'
+    failed = 'failed'
